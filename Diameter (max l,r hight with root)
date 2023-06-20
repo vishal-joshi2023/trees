@@ -1,3 +1,15 @@
+int maxHight(TreeNode<int> *root,int& maxi) {
+    
+     if(root==NULL)return 0;
+
+     int left = maxHight(root->left,maxi);
+     int right = maxHight(root->right,maxi);
+
+     maxi = max(maxi,left+right);
+
+     return max(left,right)+1;
+}
+
 int maxhight(TreeNode<int> *root){
     if(!root) return 0;
 
@@ -7,14 +19,22 @@ int diameterOfBinaryTree(TreeNode<int> *root)
 {
    // diameter is max(lh+rh)
 
-   if(!root) return 0;
+//    if(!root) return 0;
 
-   int lD = diameterOfBinaryTree(root->left);
-   int rD = diameterOfBinaryTree(root->right);
+//    int lD = diameterOfBinaryTree(root->left);
+//    int rD = diameterOfBinaryTree(root->right);
 
-   //curr Node Diameter
-   int curr = maxhight(root->left) + maxhight(root->right);
+//    //curr Node Diameter
+//    int curr = maxhight(root->left) + maxhight(root->right);
 
-   return max(curr,max(lD,rD));
+//    return max(curr,max(lD,rD));
 
+
+   // n hight only fun
+
+   int maxi=0;
+
+   maxHight(root,maxi);
+
+   return maxi;
 }
