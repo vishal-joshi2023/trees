@@ -1,0 +1,20 @@
+int maxhight(TreeNode<int> *root){
+    if(!root) return 0;
+
+    return max(maxhight(root->left),maxhight(root->right))+1;
+}
+int diameterOfBinaryTree(TreeNode<int> *root)
+{
+   // diameter is max(lh+rh)
+
+   if(!root) return 0;
+
+   int lD = diameterOfBinaryTree(root->left);
+   int rD = diameterOfBinaryTree(root->right);
+
+   //curr Node Diameter
+   int curr = maxhight(root->left) + maxhight(root->right);
+
+   return max(curr,max(lD,rD));
+
+}
